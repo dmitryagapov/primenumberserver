@@ -8,6 +8,7 @@ from tornado import gen
 import tornado.iostream
 from random import randint
 from hashlib import md5
+import sys
 
 
 def is_prime(n):
@@ -142,6 +143,9 @@ class PingHandler(RequestHandler):
         return "doesn't work! But the service is alive!"
 
 if __name__ == '__main__':
+    port = 8899
+    if len(sys.argv) > 1 and sys.argv[1].isdigit():
+        port = int(sys.argv[1])
 
     application = Application([
         (r'/primenumber/([0-9]+)', PrimeNumberHandler),
@@ -149,6 +153,6 @@ if __name__ == '__main__':
         (r'/ping', PingHandler),
     ])
     httpServer = HTTPServer(application)
-    httpServer.bind(8899)
+    httpServer.bind(port)
     httpServer.start(0)
     tornado.ioloop.IOLoop.current().start()
