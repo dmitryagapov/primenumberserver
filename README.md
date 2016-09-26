@@ -60,6 +60,7 @@ In terminal:
 #Using in python script
 
 '''python
+
 import requests
 
 r = requests.get('http://localhost:8899/primenumber/111111')
@@ -87,4 +88,5 @@ for key in factorization_dict:
 # factorized_number {'3': 2, '3803': 1, '3607': 1}
 # service_name factorization
 # number 123456789
+
 '''
