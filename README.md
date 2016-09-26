@@ -81,7 +81,9 @@ r = requests.get('http://localhost:8899/factorization/123456789')
 factorization_dict = r.json()
 
 print(factorization_dict)
+
 #{'factorized_number': {'3': 2, '3803': 1, '3607': 1}, 'service_name': 'factorization', 'number': 123456789}
+
 for key in factorization_dict:
     print(key, factorization_dict[key])
 
