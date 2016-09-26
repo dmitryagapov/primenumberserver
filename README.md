@@ -59,7 +59,7 @@ In terminal:
 
 #Using in python script
 
-'''python
+```python
 
 import requests
 
@@ -89,4 +89,4 @@ for key in factorization_dict:
 # service_name factorization
 # number 123456789
 
-'''
+```
