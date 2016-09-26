@@ -8,6 +8,7 @@ from tornado import gen
 import tornado.iostream
 from random import randint
 from hashlib import md5
+import json
 import sys
 
 
@@ -54,11 +55,11 @@ class PrimeNumberHandler(RequestHandler):
 
         response = {
             'service_name': 'prime_number',
-            'index': number,
+            'index': int(number),
             'prime_number': prime_number,
         }
 
-        self.write(response)
+        self.write(json.dumps(response))
 
     @gen.coroutine
     def get_prime_number(self, n):
@@ -76,7 +77,6 @@ class PrimeNumberHandler(RequestHandler):
         while count < n:
             prime_number = next(prime_number_gen)
             count += 1
-        print([prime_number])
         return prime_number
 
 
@@ -94,10 +94,10 @@ class FactorizationHandler(RequestHandler):
         factorization_dict = yield self.factorization(int(number))
         response = {
             'service_name': 'factorization',
-            'number': number,
+            'number': int(number),
             'factorized_number': factorization_dict,
         }
-        self.write(response)
+        self.write(json.dumps(response))
 
     @gen.coroutine
     def factorization(self, n):
